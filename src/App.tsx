@@ -23,7 +23,17 @@ function App() {
 	return (
 		<>
 			<div className='flex flex-col  items-center justify-center bg-gray-950 h-52 gap-8'>
-				<h2 className=''>Módulo Compras</h2>
+				<div className='flex justify-center gap-4'>
+					<a className='hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer pointer-events-none opacity-20'>
+						Solicitações
+					</a>
+					<a className='hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer'>
+						Ordem de compra
+					</a>
+					<a className='hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer pointer-events-none opacity-20'>
+						Nota fiscal
+					</a>
+				</div>
 
 				<div className='flex justify-center items-center gap-2'>
 					<input
