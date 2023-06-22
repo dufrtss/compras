@@ -1,3 +1,5 @@
+import { Pencil, Trash } from "@phosphor-icons/react";
+
 interface ProductProps {
 	id: number;
 	name: string;
@@ -13,7 +15,14 @@ export function Product({ id, name, amount, price }: ProductProps) {
 				<span className='col-span-3'>{name}</span>
 				<span>{amount}</span>
 				<span>{price}</span>
-				<span>Delete</span>
+				<div className='flex gap-2'>
+					<button className='outline-none rounded-sm focus:outline-cyan-600 hover:text-cyan-600 transition-colors'>
+						<Pencil size={16} />
+					</button>
+					<button className='outline-none rounded-sm focus:outline-cyan-600 hover:text-cyan-600 transition-colors'>
+						<Trash size={16} />
+					</button>
+				</div>
 			</div>
 		</>
 	);
