@@ -5,7 +5,7 @@ import { Product } from "./components/Product.tsx";
 import "./global.css";
 
 function App() {
-	const [products, setProducts] = useState([
+	const [products, /* setProducts */] = useState([
 		{
 			id: 1,
 			name: "Cabos de rede",
