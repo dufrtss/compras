@@ -1,46 +1,91 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 import { Product } from "./components/Product.tsx";
 
 import "./global.css";
 
 function App() {
-	const [products, /* setProducts */] = useState([
+	const [products, setProducts] = useState([
 		{
-			id: 1,
+			id: 2,
 			name: "Cabos de rede",
 			amount: 4,
 			price: 54.0,
 		},
 		{
-			id: 2,
+			id: 1,
 			name: "Switch 6 portas",
 			amount: 1,
 			price: 94.0,
 		},
 	]);
 
+	const [newProductName, setNewProductName] = useState("");
+	const [newProductAmount, setNewProductAmount] = useState(0);
+
+	function handleCreateNewProduct(event: FormEvent) {
+		event.preventDefault();
+
+		let newProductId = products.length + 1;
+
+		for (let i = 0; i < products.length; i++) {
+			if (products[i].id == newProductId) {
+				newProductId = newProductId + 1;
+			}
+		}
+
+		const newProduct = {
+			id: newProductId,
+			name: newProductName,
+			amount: newProductAmount,
+			price: newProductAmount * 2,
+		};
+
+		setProducts([newProduct, ...products]);
+	}
+
+	function handleSetNewProductName(event: ChangeEvent<HTMLInputElement>) {
+		event.target.setCustomValidity("");
+		setNewProductName(event.target.value);
+	}
+	function handleSetNewProductAmount(event: ChangeEvent<HTMLInputElement>) {
+		event.target.setCustomValidity("");
+		setNewProductAmount(event.target.valueAsNumber);
+	}
+
+	function deleteProduct(productToDelete: number) {
+		const productsWithoutDeletedOne = products.filter((product) => {
+			return product["id"] != productToDelete;
+		});
+
+		setProducts(productsWithoutDeletedOne);
+	}
+
 	return (
 		<>
 			<div className='flex flex-col  items-center justify-center bg-gray-950 h-52 gap-8'>
 				<div className='flex justify-center gap-4'>
 					<a className='hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer pointer-events-none opacity-20'>
-						Solicitações
+						Pedido de compra
 					</a>
 					<a className='hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer'>
-						Ordem de compra
+						Solicitação de compra
 					</a>
 					<a className='hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer pointer-events-none opacity-20'>
-						Nota fiscal
+						Nota fiscal de entrada
 					</a>
 				</div>
 
-				<div className='flex justify-center items-center gap-2'>
+				<form
+					onSubmit={handleCreateNewProduct}
+					className='flex justify-center items-center gap-2'
+				>
 					<input
 						className='px-4 py-3 w-72 bg-zinc-700 rounded-md border-2 border-zinc-600 outline-none focus:outline-cyan-600 transition-colors'
 						type='text'
 						id='product'
 						placeholder='Cadastre um novo produto'
+						onChange={handleSetNewProductName}
 					/>
 
 					<input
@@ -49,28 +94,20 @@ function App() {
 						id='amount'
 						min={0}
 						placeholder='Unidades'
-					/>
-
-					<input
-						className='px-4 py-3 w-32 bg-zinc-700 rounded-md border-2 border-zinc-600 outline-none focus:outline-cyan-600 transition-colors'
-						type='number'
-						id='price'
-						min={0}
-						placeholder='Valor'
+						onChange={handleSetNewProductAmount}
 					/>
 
 					<button className='px-4 py-3 w-24 font-semibold rounded-md bg-cyan-500 hover:bg-cyan-400 outline-none focus:outline-cyan-500 transition-colors'>
 						Add
 					</button>
-				</div>
+				</form>
 			</div>
 
 			<div className='flex flex-col items-center justify-center gap-4 p-4'>
-				<div className='grid grid-flow-col grid-cols-6 py-2 px-5 w-7/12 outline-none'>
+				<div className='grid grid-flow-col grid-cols-4 py-2 px-5 w-2/5 outline-none'>
 					<span>ID</span>
-					<span className='col-span-3'>Produto</span>
+					<span className='col-span-2 ml-1'>Produto</span>
 					<span>Unidades</span>
-					<span>Valor</span>
 					<span>Ações</span>
 				</div>
 
@@ -81,7 +118,7 @@ function App() {
 							id={product.id}
 							name={product.name}
 							amount={product.amount}
-							price={product.price}
+							onDeleteProduct={deleteProduct}
 						/>
 					);
 				})}
