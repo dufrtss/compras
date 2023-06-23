@@ -1,28 +1,29 @@
-import { Pencil, Trash } from "@phosphor-icons/react";
+import { Trash } from "@phosphor-icons/react";
 
 interface ProductProps {
 	id: number;
 	name: string;
 	amount: number;
-	price: number;
+	onDeleteProduct: (id: number) => void;
 }
 
-export function Product({ id, name, amount, price }: ProductProps) {
+export function Product({ id, name, amount, onDeleteProduct }: ProductProps) {
+	function handleDeleteProduct() {
+		onDeleteProduct(id);
+	}
+
 	return (
 		<>
-			<div className='grid grid-flow-col grid-cols-6 py-4 px-5 w-7/12 bg-zinc-700 outline-none rounded-md border-2 border-zinc-600'>
+			<div className='grid grid-flow-col grid-cols-4 py-4 px-5 w-2/5 bg-zinc-700 outline-none rounded-md border-2 border-zinc-600'>
 				<span>{id}</span>
-				<span className='col-span-3'>{name}</span>
-				<span>{amount}</span>
-				<span>{price}</span>
-				<div className='flex gap-2'>
-					<button className='outline-none rounded-sm focus:outline-cyan-600 hover:text-cyan-600 transition-colors'>
-						<Pencil size={16} />
-					</button>
-					<button className='outline-none rounded-sm focus:outline-cyan-600 hover:text-cyan-600 transition-colors'>
-						<Trash size={16} />
-					</button>
-				</div>
+				<span className='col-span-2'>{name}</span>
+				<span className='ml-4'>{amount}</span>
+				<button
+					onClick={handleDeleteProduct}
+					className='outline-none mr-3 rounded-sm focus:outline-cyan-600 hover:text-cyan-600 transition-colors'
+				>
+					<Trash size={16} />
+				</button>
 			</div>
 		</>
 	);
