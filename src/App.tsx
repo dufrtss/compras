@@ -38,7 +38,7 @@ export function App() {
       id: newProductId,
       name: newProductName,
       amount: newProductAmount,
-      price: newProductAmount * 2,
+      price: newProductAmount,
     };
 
     setProducts([newProduct, ...products]);
