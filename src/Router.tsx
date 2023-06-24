@@ -11,6 +11,7 @@ interface RouterProps {
     id: number;
     name: string;
     amount: number;
+    price: number;
   }[];
   newProductName?: string;
   newProductAmount?: number;
@@ -46,7 +47,10 @@ export function Router({
             />
           }
         />
-        <Route path="/order" element={<Order />} />
+        <Route
+          path="/order"
+          element={<Order products={products} deleteProduct={deleteProduct} />}
+        />
         <Route path="/invoice" element={<Invoice />} />
       </Route>
     </Routes>
