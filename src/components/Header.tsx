@@ -7,8 +7,8 @@ export function Header() {
         <nav>
           <div className="flex gap-7">
             <NavLink
-              className="hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer pointer-events-none opacity-20"
-              to="/"
+              className="hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer"
+              to="/order"
               title="Order"
             >
               Pedido de compra
@@ -21,8 +21,8 @@ export function Header() {
               Solicitação de compra
             </NavLink>
             <NavLink
-              className="hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer pointer-events-none opacity-20"
-              to="/"
+              className="hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer"
+              to="/invoice"
               title="Invoice"
             >
               Nota fiscal de entrada
