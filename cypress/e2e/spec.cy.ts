@@ -55,7 +55,7 @@ describe('Realizar um pedido de compra', () => {
 })
 
 describe('Adicionar e remover itens antes do pedido de compra', () => {
-  it('Cadastra um novo produto, deleta ele na ordem de compra e envia', () => {
+  it('Cadastra um novo produto na solicitação de compra, deleta ele no pedido de compra e confirma o envio do pedido', () => {
     cy.visit('http://localhost:5173/')
 
     cy.contains("Pedido de compra").click()
