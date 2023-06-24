@@ -35,3 +35,39 @@ describe('Remover um produto na solicitação de compra', () => {
     cy.get("#trash").click()
   })
 })
+
+describe('Realizar um pedido de compra', () => {
+  it('Acessa, registra e envia um novo pedido de compra', () => {
+    cy.visit('http://localhost:5173/')
+
+    cy.contains("Pedido de compra").click()
+
+    cy.get("#supplier").type("Useall")
+
+    cy.get("#shipping").type("50")
+
+    cy.get("#payMethod").type("À Vista")
+
+    cy.get("#exitType").type("Matéria Prima")
+
+    cy.contains("Enviar pedido").click()
+  })
+})
+
+describe('Adicionar e remover itens antes do pedido de compra', () => {
+  it('Cadastra um novo produto, deleta ele na ordem de compra e envia', () => {
+    cy.visit('http://localhost:5173/')
+
+    cy.contains("Pedido de compra").click()
+
+    cy.get("#supplier").type("Useall")
+
+    cy.get("#shipping").type("50")
+
+    cy.get("#payMethod").type("À Vista")
+
+    cy.get("#exitType").type("Matéria Prima")
+
+    cy.contains("Enviar pedido").click()
+  })
+})
