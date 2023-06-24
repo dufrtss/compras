@@ -8,6 +8,11 @@
 ├── cypress
 │   ├── e2e
 │   │   ├── spec.cy.ts
+│   ├── fixtures
+│   │   ├── example.json
+│   ├── support
+│   │   ├── commands.ts
+│   │   ├── e2e.ts
 ├── src
 │   ├── components
 │   │   ├── Header.tsx
