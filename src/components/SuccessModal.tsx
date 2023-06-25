@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { SpeakerNone, X } from "@phosphor-icons/react";
+import { X } from "@phosphor-icons/react";
 
 interface SuccessModalProps {
   closeModal: () => void;
