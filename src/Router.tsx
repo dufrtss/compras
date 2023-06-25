@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import { DefaultLayout } from "./layouts/DefaultLayout";
 import { Request } from "./pages/Request";
 import { Order } from "./pages/Order";
-import { Invoice } from "./pages/Invoice";
 
 interface RouterProps {
   products: {
@@ -51,7 +50,6 @@ export function Router({
           path="/order"
           element={<Order products={products} deleteProduct={deleteProduct} />}
         />
-        <Route path="/invoice" element={<Invoice />} />
       </Route>
     </Routes>
   );

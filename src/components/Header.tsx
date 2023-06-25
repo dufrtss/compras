@@ -20,13 +20,6 @@ export function Header() {
             >
               Solicitação de compra
             </NavLink>
-            <NavLink
-              className="hover:border-b-2 hover:-mb-2 hover:border-cyan-500 cursor-pointer"
-              to="/invoice"
-              title="Invoice"
-            >
-              Nota fiscal de entrada
-            </NavLink>
           </div>
         </nav>
       </div>
